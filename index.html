@@ -9,18 +9,85 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <nav>
+    <!-- 
+        Skip links are a hidden navigation to help people who are using a keyboard to access your site.
+        They are not visible inless a iser tabs onto them 
+-->
+    <div class="skip-links">
+        <ul>
+            <li><a href="#navigation">Skip to navigation</a></li>
+            <!-- the #, is a link that takes you to an ID the page -->
+            <li><a href="#tycheInfo">Skip to main content</a></li>
+            <li><a href="">Skip to footer</a></li>
+        </ul>
+    </div>
+
+
+    <!-- The job of ARIA role tags is to classify parts of your page by their functionality -->
+    <nav role="navigation" id="navigation">
         <ul>
             <li><a href="">Home</a></li>
             <li><a href="">About</a></li>
-            <li><a href="">Stuff</a></li>
-            <li><a href="">Contact</a></li>
+
+
+            <!-- The aria-label tag helps devices and tech understand the purpose of what a link is (and where it will take you) -->
+            <li><a href="" aria-label="opens up the blog page">Stuff</a></li>
+            <li><a href="" aria-label="opens up the contact page">Contact</a></li>
         </ul>
     </nav>
     
-    <main>        
-        <article>
-            <img src="images/tyche.jpg">
+
+    <!-- ARIA role tag -->
+    <main role="main">        
+        <!-- 2 tags necessary in any form:
+        action says where the info is going to be processed...
+    method says how ts going to get there -->
+
+    <form action="processForm.php" method="post">
+        <!-- input tags allow the user to type content or other info
+        Input tags require 3 attributes:
+    - "type" which says what kind of input this is (i.e. text, checkbox)
+    - Name is the label used when the information is processed on the server
+    - ID is required to match with the label tag
+-->
+<!-- 
+    Label tags should match up to one of your form fields.
+    The for attribute needs to match the id of the form field 
+ -->
+    <div>
+        <label for="fullname">Enter your full name: </label>
+        <input type="text" name="fullname" id="fullname">
+    </div>
+    <div>
+        <!-- 
+            Providing specific form types, like email, will allow mobile devices to provide the user with an appropriate keyboard set when typing in this field. 
+        -->
+        <label for="email">Enter your email: </label>
+        <input type="email" name="email" id="email">
+    </div>
+    <div>
+        <!-- 
+            Using the "checked" attribute will start a radio button or checkbox as checked when the page loads. 
+        -->
+        <label for="spam">Spam me forever: </label>
+        <input type="checkbox" name="spam" id="spam" checked="checked">
+    </div>
+    <div>
+        <!-- 
+            the submit input makes a button to subumit the form.  
+            "value" sets the text inside the button.
+        -->
+        <input type="submit" name="submit" id="submit" value="Sign Up">
+    </div>
+
+    </form>
+
+        <!-- itemscope defines an element as being used for Schema.
+        You can then apply a particular scheme to it with itemtype
+        -->
+        <article itemscope itemtype="https://schema.org/Person" role="article">
+            <!-- the aria-details tag matches the id of another element and shows the the content or text is linked to the image (or describing image) -->
+            <img src="images/tyche.jpg" aria-details="tycheInfo" alt="a grey kitten on a red blanket">
             <section id="tycheInfo">
                 <p>Tyche</p>
                 <p>October 15, 2020</p>
@@ -28,8 +95,8 @@
             </section>
         </article>
     </main>
-    <aside>
-        <a href="">Subscribe</a>
+    <aside role="content-info">
+        <a href="" aria-label="open a pop-up to enter newsletter subscription information">Subscribe</a>
     </aside>
 </body>
 </html>

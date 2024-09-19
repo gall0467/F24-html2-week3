@@ -29,3 +29,39 @@ nav li a:hover{
 article img{
     width:60%;
 }
+
+/* *********************************************** */
+                /* in-class styles */
+/* *********************************************** */
+
+/* 
+we can style elements based on their "focus", whether they are active or not
+(usually when a user has selected them) 
+*/
+
+input:focus {
+    border: 2px solid red;
+    color: blueviolet;
+}
+
+
+.skip-links ul {
+    list-style: none;
+    position:relative;
+}
+
+.skip-links a {
+    /* move them about the top of the page usig position ahsolute */
+    position: absolute;
+    top: -10em;
+}
+
+/* make the link visible when it is focused (or when the user tabs to it) */
+.skip-links a:focus {
+    top: 0;
+    background: darkorange;
+    display: block;
+    padding: 10px;
+}
+
+/* so we can see the focus on a paragraph */
